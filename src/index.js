@@ -1,23 +1,23 @@
 var Alexa = require('alexa-sdk');
 var ical = require('ical');
-var http = require('http');
 var utils = require('util');
+var moment = require('moment');
 
 var states = {
     SEARCHMODE: '_SEARCHMODE',
-    DESCRIPTION: '_DESKMODE',
+    DESCRIPTIONMODE: '_DESCRIPTIONMODE'
 };
 // local variable holding reference to the Alexa SDK object
 var alexa;
 
 //OPTIONAL: replace with "amzn1.ask.skill.[your-unique-value-here]";
-var APP_ID = undefined; 
+var APP_ID = 'amzn1.ask.skill.2283a2d6-cdef-4265-9f97-28d961d74aac';
 
 // URL to get the .ics from, in this instance we are getting from Stanford however this can be changed
-var URL = "http://events.stanford.edu/eventlist.ics";
+var URL = "https://s3.amazonaws.com/calendars.epicminds.com/eventbrite-pssug.ics";
 
 // Skills name 
-var skillName = "Events calendar:";
+var skillName = "Philadelphia SQL Server User Group Calendar:";
 
 // Message when the skill is first called
 var welcomeMessage = "You can ask for the events today. search for events by date. or say help. What would you like? ";
@@ -28,7 +28,7 @@ var HelpMessage = "Here are some things you can say: Is there an event today? Is
 var descriptionStateHelpMessage = "Here are some things you can say: Tell me about event one";
 
 // Used when there is no data within a time period
-var NoDataMessage = "Sorry there arnt't any events scheduled. Would you like to search again?";
+var NoDataMessage = "Sorry there aren't any events scheduled. Would you like to search again?";
 
 // Used to tell user skill is closing
 var shutdownMessage = "Ok see you again soon.";
@@ -48,10 +48,10 @@ var firstThreeMessage = "Here are the first %d. ";
 var eventSummary = "The %s event is, %s at %s on %s ";
 
 // Only used for the card on the companion app
-var cardContentSummary = "%s at %s on %s ";
+var cardContentSummary = "%s at %s on %s\n%s";
 
 // More info text
-var haveEventsRepromt = "Give me an event number to hear more information.";
+var haveEventsReprompt = "Give me an event number to hear more information.";
 
 // Error if a date is out of range
 var dateOutOfRange = "Date is out of range please choose another date";
@@ -82,10 +82,36 @@ var newSessionHandlers = {
         this.handler.state = states.SEARCHMODE;
         this.emit(':ask', skillName + " " + welcomeMessage, welcomeMessage);
     },
+
+    'AMAZON.StopIntent': function () {
+        this.emit(':tell', killSkillMessage);
+    },
+
+    'AMAZON.CancelIntent': function () {
+        this.emit(':tell', killSkillMessage);
+    },
+
+    'AMAZON.NoIntent': function () {
+        this.emit(':tell', shutdownMessage);
+    },
+
+    'SessionEndedRequest': function () {
+        this.emit('AMAZON.StopIntent');
+    },
+
+    'Unhandled': function () {
+        // This occurs if there is no state defined.
+        this.emit(':ask', HelpMessage, HelpMessage);
+    }
 };
 
 // Create a new handler with a SEARCH state
 var startSearchHandlers = Alexa.CreateStateHandler(states.SEARCHMODE, {
+    'LaunchRequest': function () {
+        this.handler.state = states.SEARCHMODE;
+        this.emit(':ask', skillName + " " + welcomeMessage, welcomeMessage);
+    },
+
     'AMAZON.YesIntent': function () {
         output = welcomeMessage;
         alexa.emit(':ask', output, welcomeMessage);
@@ -102,38 +128,66 @@ var startSearchHandlers = Alexa.CreateStateHandler(states.SEARCHMODE, {
     'searchIntent': function () {
         // Declare variables 
         var eventList = new Array();
-        var slotValue = this.event.request.intent.slots.date.value;
+        var dateValue = this.event.request.intent.slots.date.value;
+        var groupValue = this.event.request.intent.slots.group.value;
         var parent = this;
+
+        if (!dateValue) {
+            this.emit(':ask', skillName + " " + welcomeMessage, welcomeMessage);
+            return;
+        }
 
         // Using the iCal library I pass the URL of where we want to get the data from.
         ical.fromURL(URL, {}, function (err, data) {
             // Loop through all iCal data found
             for (var k in data) {
                 if (data.hasOwnProperty(k)) {
-                    var ev = data[k]
+                    var ev = data[k];
                     // Pick out the data relevant to us and create an object to hold it.
                     var eventData = {
                         summary: removeTags(ev.summary),
                         location: removeTags(ev.location),
                         description: removeTags(ev.description),
+                        url: removeTags(ev.url),
                         start: ev.start
-                    }
+                    };
                     // add the newly created object to an array for use later.
-                    eventList.push(eventData);
+                    switch ((groupValue || '').toLowerCase()) {
+                        case 'b. i.':
+                        case 'bi':
+                        case 'b.i.':
+                        case 'business intelligence':
+                            if (ev.summary.toLowerCase().includes('business intelligence'))
+                                eventList.push(eventData);
+                            break;
+                        case 'center city':
+                        case 'philadelphia':
+                            if (ev.summary.toLowerCase().includes('center city'))
+                                eventList.push(eventData);
+                            break;
+                        case 'jersey':
+                        case 'south jersey':
+                            if (ev.summary.toLowerCase().includes('south jersey'))
+                                eventList.push(eventData);
+                            break;
+                        default:
+                            eventList.push(eventData);
+                            break;
+                    }
                 }
             }
             // Check we have data
             if (eventList.length > 0) {
                 // Read slot data and parse out a usable date 
-                var eventDate = getDateFromSlot(slotValue);
+                var eventDate = getDateFromSlot(dateValue);
                 // Check we have both a start and end date
                 if (eventDate.startDate && eventDate.endDate) {
                     // initiate a new array, and this time fill it with events that fit between the two dates
-                    relevantEvents = getEventsBeweenDates(eventDate.startDate, eventDate.endDate, eventList);
+                    relevantEvents = getEventsBetweenDates(eventDate.startDate, eventDate.endDate, eventList);
 
                     if (relevantEvents.length > 0) {
                         // change state to description
-                        parent.handler.state = states.DESCRIPTION;
+                        parent.handler.state = states.DESCRIPTIONMODE;
 
                         // Create output for both Alexa and the content card
                         var cardContent = "";
@@ -145,7 +199,7 @@ var startSearchHandlers = Alexa.CreateStateHandler(states.SEARCHMODE, {
                         output += scheduledEventMessage;
 
                         if (relevantEvents.length > 1) {
-                            output += utils.format(firstThreeMessage, relevantEvents.length);
+                            output += utils.format(firstThreeMessage, relevantEvents.length > 3 ? 3 : relevantEvents.length);
                         }
 
                         if (relevantEvents[0] != null) {
@@ -163,11 +217,11 @@ var startSearchHandlers = Alexa.CreateStateHandler(states.SEARCHMODE, {
 
                         for (var i = 0; i < relevantEvents.length; i++) {
                             var date = new Date(relevantEvents[i].start);
-                            cardContent += utils.format(cardContentSummary, removeTags(relevantEvents[i].summary), removeTags(relevantEvents[i].location), date.toDateString()+ "\n\n");
+                            cardContent += utils.format(cardContentSummary, removeTags(relevantEvents[i].summary), removeTags(relevantEvents[i].location), date.toDateString(), removeTags(relevantEvents[i].url)  + "\n\n");
                         }
 
                         output += eventNumberMoreInfoText;
-                        alexa.emit(':askWithCard', output, haveEventsRepromt, cardTitle, cardContent);
+                        alexa.emit(':askWithCard', output, haveEventsReprompt, cardTitle, cardContent);
                     } else {
                         output = NoDataMessage;
                         alexa.emit(':ask', output, output);
@@ -207,10 +261,10 @@ var startSearchHandlers = Alexa.CreateStateHandler(states.SEARCHMODE, {
 });
 
 // Create a new handler object for description state
-var descriptionHandlers = Alexa.CreateStateHandler(states.DESCRIPTION, {
+var descriptionHandlers = Alexa.CreateStateHandler(states.DESCRIPTIONMODE, {
     'eventIntent': function () {
 
-        var repromt = " Would you like to hear another event?";
+        var reprompt = " Would you like to hear another event?";
         var slotValue = this.event.request.intent.slots.number.value;
 
         // parse slot value
@@ -221,9 +275,9 @@ var descriptionHandlers = Alexa.CreateStateHandler(states.DESCRIPTION, {
             // use the slot value as an index to retrieve description from our relevant array
             output = descriptionMessage + removeTags(relevantEvents[index].description);
 
-            output += repromt;
+            output += reprompt;
 
-            this.emit(':askWithCard', output, repromt, relevantEvents[index].summary, output);
+            this.emit(':askWithCard', output, reprompt, relevantEvents[index].summary, output);
         } else {
             this.emit(':tell', eventOutOfRange);
         }
@@ -262,14 +316,18 @@ var descriptionHandlers = Alexa.CreateStateHandler(states.DESCRIPTION, {
 // register handlers
 exports.handler = function (event, context, callback) {
     alexa = Alexa.handler(event, context);
-    alexa.AppId = APP_ID;
+    alexa.appId = APP_ID;
     alexa.registerHandlers(newSessionHandlers, startSearchHandlers, descriptionHandlers);
+    alexa.state = states.SEARCHMODE;
+    alexa._event.session.attributes['STATE'] = alexa.state;
     alexa.execute();
 };
 //======== HELPER FUNCTIONS ==============
 
 // Remove HTML tags from string
 function removeTags(str) {
+    if (!str)
+        return str;
     return str.replace(/<(?:.|\n)*?>/gm, '');
 }
 
@@ -284,9 +342,7 @@ function getDateFromSlot(rawDate) {
     var date = new Date(Date.parse(rawDate));
     var result;
     // create an empty object to use later
-    var eventDate = {
-
-    };
+    var eventDate = {};
 
     // if could not parse data must be one of the other formats
     if (isNaN(date)) {
@@ -307,9 +363,15 @@ function getDateFromSlot(rawDate) {
             eventDate["error"] = dateOutOfRange;
         }
         // original slot value was parsed correctly
+    } else if (/^20[0-9][0-9]-[01][0-9]$/.test(rawDate)) {
+        eventDate["startDate"] = new Date(date);
+        eventDate["endDate"] = moment(eventDate["startDate"]).add(1, 'month').toDate();
+    } else if (/^20[0-9][0-9]$/.test(rawDate)) {
+        eventDate["startDate"] = new Date(date);
+        eventDate["endDate"] = moment(eventDate["startDate"]).add(1, 'year').toDate();
     } else {
         eventDate["startDate"] = new Date(date).setUTCHours(0, 0, 0, 0);
-        eventDate["endDate"] = new Date(date).setUTCHours(24, 0, 0, 0);
+        eventDate["endDate"] = moment(eventDate["startDate"]).add(1, 'day').toDate();
     }
     return eventDate;
 }
@@ -326,7 +388,7 @@ function getWeekendData(res) {
 
         return Dates = {
             startDate: weekStart,
-            endDate: weekEnd,
+            endDate: weekEnd
         };
     }
 }
@@ -345,7 +407,7 @@ function getWeekData(res) {
 
         return Dates = {
             startDate: weekStart,
-            endDate: weekEnd,
+            endDate: weekEnd
         };
     }
 }
@@ -361,7 +423,7 @@ var w2date = function (year, wn, dayNb) {
 };
 
 // Loops though the events from the iCal data, and checks which ones are between our start data and out end date
-function getEventsBeweenDates(startDate, endDate, eventList) {
+function getEventsBetweenDates(startDate, endDate, eventList) {
 
     var start = new Date(startDate);
     var end = new Date(endDate);
@@ -374,7 +436,7 @@ function getEventsBeweenDates(startDate, endDate, eventList) {
         }
     }
 
-    console.log("FOUND " + data.length + " events between those times")
+    console.log("FOUND " + data.length + " events between those times");
     return data;
 }
 

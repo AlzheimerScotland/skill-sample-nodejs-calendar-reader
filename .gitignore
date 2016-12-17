@@ -72,3 +72,7 @@ Temporary Items
 
 skill-sample-nodejs-calendar-reader.pdf
 Archive.zip
+.env
+deploy.env
+event.json
+context.json

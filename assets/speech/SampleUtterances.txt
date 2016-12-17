@@ -1,14 +1,567 @@
-searchIntent get me stuff happening {date}
-searchIntent get me events for {date}
-searchIntent whats on {date}
-searchIntent whats happening {date}
-searchIntent tell me whats happening {date}
-searchIntent what is happening {date}
-searchIntent what is happening on {date}
-searchIntent what events are happening {date}
-searchIntent what events are happening on {date}
-
-eventIntent tell me about event {number}
-eventIntent whats event {number}
-eventIntent number {number}
-
+searchIntent	what is the event on {date}
+searchIntent	what was the event on {date}
+searchIntent	what is the user group event on {date}
+searchIntent	what was the user group event on {date}
+searchIntent	what is the meeting on {date}
+searchIntent	what was the meeting on {date}
+searchIntent	what is the user group meeting on {date}
+searchIntent	what was the user group meeting on {date}
+searchIntent	what is the event {date}
+searchIntent	what was the event {date}
+searchIntent	what is the user group event {date}
+searchIntent	what was the user group event {date}
+searchIntent	what is the meeting {date}
+searchIntent	what was the meeting {date}
+searchIntent	what is the user group meeting {date}
+searchIntent	what was the user group meeting {date}
+searchIntent	what is the {group} event on {date}
+searchIntent	what was the {group} event on {date}
+searchIntent	what is the {group} user group event on {date}
+searchIntent	what was the {group} user group event on {date}
+searchIntent	what is the {group} meeting on {date}
+searchIntent	what was the {group} meeting on {date}
+searchIntent	what is the {group} user group meeting on {date}
+searchIntent	what was the {group} user group meeting on {date}
+searchIntent	what is the {group} event {date}
+searchIntent	what was the {group} event {date}
+searchIntent	what is the {group} user group event {date}
+searchIntent	what was the {group} user group event {date}
+searchIntent	what is the {group} meeting {date}
+searchIntent	what was the {group} meeting {date}
+searchIntent	what is the {group} user group meeting {date}
+searchIntent	what was the {group} user group meeting {date}
+searchIntent	what is happening on {date}
+searchIntent	what was happening on {date}
+searchIntent	what is occurring on {date}
+searchIntent	what was occurring on {date}
+searchIntent	what is on {date}
+searchIntent	what was on {date}
+searchIntent	what is happening {date}
+searchIntent	what was happening {date}
+searchIntent	what is occurring {date}
+searchIntent	what was occurring {date}
+searchIntent	what is {date}
+searchIntent	what was {date}
+searchIntent	what are the events on {date}
+searchIntent	what were the events on {date}
+searchIntent	what are the user group events on {date}
+searchIntent	what were the user group events on {date}
+searchIntent	what are the meetings on {date}
+searchIntent	what were the meetings on {date}
+searchIntent	what are the user group meetings on {date}
+searchIntent	what were the user group meetings on {date}
+searchIntent	what are the events {date}
+searchIntent	what were the events {date}
+searchIntent	what are the user group events {date}
+searchIntent	what were the user group events {date}
+searchIntent	what are the meetings {date}
+searchIntent	what were the meetings {date}
+searchIntent	what are the user group meetings {date}
+searchIntent	what were the user group meetings {date}
+searchIntent	what are the {group} events on {date}
+searchIntent	what were the {group} events on {date}
+searchIntent	what are the {group} user group events on {date}
+searchIntent	what were the {group} user group events on {date}
+searchIntent	what are the {group} meetings on {date}
+searchIntent	what were the {group} meetings on {date}
+searchIntent	what are the {group} user group meetings on {date}
+searchIntent	what were the {group} user group meetings on {date}
+searchIntent	what are the {group} events {date}
+searchIntent	what were the {group} events {date}
+searchIntent	what are the {group} user group events {date}
+searchIntent	what were the {group} user group events {date}
+searchIntent	what are the {group} meetings {date}
+searchIntent	what were the {group} meetings {date}
+searchIntent	what are the {group} user group meetings {date}
+searchIntent	what were the {group} user group meetings {date}
+searchIntent	what events are happening on {date}
+searchIntent	what user group events are happening on {date}
+searchIntent	what meetings are happening on {date}
+searchIntent	what user group meetings are happening on {date}
+searchIntent	what events were happening on {date}
+searchIntent	what user group events were happening on {date}
+searchIntent	what meetings were happening on {date}
+searchIntent	what user group meetings were happening on {date}
+searchIntent	what events are occurring on {date}
+searchIntent	what user group events are occurring on {date}
+searchIntent	what meetings are occurring on {date}
+searchIntent	what user group meetings are occurring on {date}
+searchIntent	what events were occurring on {date}
+searchIntent	what user group events were occurring on {date}
+searchIntent	what meetings were occurring on {date}
+searchIntent	what user group meetings were occurring on {date}
+searchIntent	what events are on {date}
+searchIntent	what user group events are on {date}
+searchIntent	what meetings are on {date}
+searchIntent	what user group meetings are on {date}
+searchIntent	what events were on {date}
+searchIntent	what user group events were on {date}
+searchIntent	what meetings were on {date}
+searchIntent	what user group meetings were on {date}
+searchIntent	what events are happening {date}
+searchIntent	what user group events are happening {date}
+searchIntent	what meetings are happening {date}
+searchIntent	what user group meetings are happening {date}
+searchIntent	what events were happening {date}
+searchIntent	what user group events were happening {date}
+searchIntent	what meetings were happening {date}
+searchIntent	what user group meetings were happening {date}
+searchIntent	what events are occurring {date}
+searchIntent	what user group events are occurring {date}
+searchIntent	what meetings are occurring {date}
+searchIntent	what user group meetings are occurring {date}
+searchIntent	what events were occurring {date}
+searchIntent	what user group events were occurring {date}
+searchIntent	what meetings were occurring {date}
+searchIntent	what user group meetings were occurring {date}
+searchIntent	what events are {date}
+searchIntent	what user group events are {date}
+searchIntent	what meetings are {date}
+searchIntent	what user group meetings are {date}
+searchIntent	what events were {date}
+searchIntent	what user group events were {date}
+searchIntent	what meetings were {date}
+searchIntent	what user group meetings were {date}
+searchIntent	what {group} events are happening on {date}
+searchIntent	what {group} user group events are happening on {date}
+searchIntent	what {group} meetings are happening on {date}
+searchIntent	what {group} user group meetings are happening on {date}
+searchIntent	what {group} events were happening on {date}
+searchIntent	what {group} user group events were happening on {date}
+searchIntent	what {group} meetings were happening on {date}
+searchIntent	what {group} user group meetings were happening on {date}
+searchIntent	what {group} events are occurring on {date}
+searchIntent	what {group} user group events are occurring on {date}
+searchIntent	what {group} meetings are occurring on {date}
+searchIntent	what {group} user group meetings are occurring on {date}
+searchIntent	what {group} events were occurring on {date}
+searchIntent	what {group} user group events were occurring on {date}
+searchIntent	what {group} meetings were occurring on {date}
+searchIntent	what {group} user group meetings were occurring on {date}
+searchIntent	what {group} events are on {date}
+searchIntent	what {group} user group events are on {date}
+searchIntent	what {group} meetings are on {date}
+searchIntent	what {group} user group meetings are on {date}
+searchIntent	what {group} events were on {date}
+searchIntent	what {group} user group events were on {date}
+searchIntent	what {group} meetings were on {date}
+searchIntent	what {group} user group meetings were on {date}
+searchIntent	what {group} events are happening {date}
+searchIntent	what {group} user group events are happening {date}
+searchIntent	what {group} meetings are happening {date}
+searchIntent	what {group} user group meetings are happening {date}
+searchIntent	what {group} events were happening {date}
+searchIntent	what {group} user group events were happening {date}
+searchIntent	what {group} meetings were happening {date}
+searchIntent	what {group} user group meetings were happening {date}
+searchIntent	what {group} events are occurring {date}
+searchIntent	what {group} user group events are occurring {date}
+searchIntent	what {group} meetings are occurring {date}
+searchIntent	what {group} user group meetings are occurring {date}
+searchIntent	what {group} events were occurring {date}
+searchIntent	what {group} user group events were occurring {date}
+searchIntent	what {group} meetings were occurring {date}
+searchIntent	what {group} user group meetings were occurring {date}
+searchIntent	what {group} events are {date}
+searchIntent	what {group} user group events are {date}
+searchIntent	what {group} meetings are {date}
+searchIntent	what {group} user group meetings are {date}
+searchIntent	what {group} events were {date}
+searchIntent	what {group} user group events were {date}
+searchIntent	what {group} meetings were {date}
+searchIntent	what {group} user group meetings were {date}
+searchIntent	what event is happening on {date}
+searchIntent	what user group event is happening on {date}
+searchIntent	what meeting is happening on {date}
+searchIntent	what user group meeting is happening on {date}
+searchIntent	what event was happening on {date}
+searchIntent	what user group event was happening on {date}
+searchIntent	what meeting was happening on {date}
+searchIntent	what user group meeting was happening on {date}
+searchIntent	what event is occurring on {date}
+searchIntent	what user group event is occurring on {date}
+searchIntent	what meeting is occurring on {date}
+searchIntent	what user group meeting is occurring on {date}
+searchIntent	what event was occurring on {date}
+searchIntent	what user group event was occurring on {date}
+searchIntent	what meeting was occurring on {date}
+searchIntent	what user group meeting was occurring on {date}
+searchIntent	what event is on {date}
+searchIntent	what user group event is on {date}
+searchIntent	what meeting is on {date}
+searchIntent	what user group meeting is on {date}
+searchIntent	what event was on {date}
+searchIntent	what user group event was on {date}
+searchIntent	what meeting was on {date}
+searchIntent	what user group meeting was on {date}
+searchIntent	what event is happening {date}
+searchIntent	what user group event is happening {date}
+searchIntent	what meeting is happening {date}
+searchIntent	what user group meeting is happening {date}
+searchIntent	what event was happening {date}
+searchIntent	what user group event was happening {date}
+searchIntent	what meeting was happening {date}
+searchIntent	what user group meeting was happening {date}
+searchIntent	what event is occurring {date}
+searchIntent	what user group event is occurring {date}
+searchIntent	what meeting is occurring {date}
+searchIntent	what user group meeting is occurring {date}
+searchIntent	what event was occurring {date}
+searchIntent	what user group event was occurring {date}
+searchIntent	what meeting was occurring {date}
+searchIntent	what user group meeting was occurring {date}
+searchIntent	what event is {date}
+searchIntent	what user group event is {date}
+searchIntent	what meeting is {date}
+searchIntent	what user group meeting is {date}
+searchIntent	what event was {date}
+searchIntent	what user group event was {date}
+searchIntent	what meeting was {date}
+searchIntent	what user group meeting was {date}
+searchIntent	what {group} event is happening on {date}
+searchIntent	what {group} user group event is happening on {date}
+searchIntent	what {group} meeting is happening on {date}
+searchIntent	what {group} user group meeting is happening on {date}
+searchIntent	what {group} event was happening on {date}
+searchIntent	what {group} user group event was happening on {date}
+searchIntent	what {group} meeting was happening on {date}
+searchIntent	what {group} user group meeting was happening on {date}
+searchIntent	what {group} event is occurring on {date}
+searchIntent	what {group} user group event is occurring on {date}
+searchIntent	what {group} meeting is occurring on {date}
+searchIntent	what {group} user group meeting is occurring on {date}
+searchIntent	what {group} event was occurring on {date}
+searchIntent	what {group} user group event was occurring on {date}
+searchIntent	what {group} meeting was occurring on {date}
+searchIntent	what {group} user group meeting was occurring on {date}
+searchIntent	what {group} event is on {date}
+searchIntent	what {group} user group event is on {date}
+searchIntent	what {group} meeting is on {date}
+searchIntent	what {group} user group meeting is on {date}
+searchIntent	what {group} event was on {date}
+searchIntent	what {group} user group event was on {date}
+searchIntent	what {group} meeting was on {date}
+searchIntent	what {group} user group meeting was on {date}
+searchIntent	what {group} event is happening {date}
+searchIntent	what {group} user group event is happening {date}
+searchIntent	what {group} meeting is happening {date}
+searchIntent	what {group} user group meeting is happening {date}
+searchIntent	what {group} event was happening {date}
+searchIntent	what {group} user group event was happening {date}
+searchIntent	what {group} meeting was happening {date}
+searchIntent	what {group} user group meeting was happening {date}
+searchIntent	what {group} event is occurring {date}
+searchIntent	what {group} user group event is occurring {date}
+searchIntent	what {group} meeting is occurring {date}
+searchIntent	what {group} user group meeting is occurring {date}
+searchIntent	what {group} event was occurring {date}
+searchIntent	what {group} user group event was occurring {date}
+searchIntent	what {group} meeting was occurring {date}
+searchIntent	what {group} user group meeting was occurring {date}
+searchIntent	what {group} event is {date}
+searchIntent	what {group} user group event is {date}
+searchIntent	what {group} meeting is {date}
+searchIntent	what {group} user group meeting is {date}
+searchIntent	what {group} event was {date}
+searchIntent	what {group} user group event was {date}
+searchIntent	what {group} meeting was {date}
+searchIntent	what {group} user group meeting was {date}
+searchIntent	what events happened on {date}
+searchIntent	what user group events happened on {date}
+searchIntent	what meetings happened on {date}
+searchIntent	what user group meetings happened on {date}
+searchIntent	what events occurred on {date}
+searchIntent	what user group events occurred on {date}
+searchIntent	what meetings occurred on {date}
+searchIntent	what user group meetings occurred on {date}
+searchIntent	what events happened {date}
+searchIntent	what user group events happened {date}
+searchIntent	what meetings happened {date}
+searchIntent	what user group meetings happened {date}
+searchIntent	what events occurred {date}
+searchIntent	what user group events occurred {date}
+searchIntent	what meetings occurred {date}
+searchIntent	what user group meetings occurred {date}
+searchIntent	what {group} events happened on {date}
+searchIntent	what {group} user group events happened on {date}
+searchIntent	what {group} meetings happened on {date}
+searchIntent	what {group} user group meetings happened on {date}
+searchIntent	what {group} events occurred on {date}
+searchIntent	what {group} user group events occurred on {date}
+searchIntent	what {group} meetings occurred on {date}
+searchIntent	what {group} user group meetings occurred on {date}
+searchIntent	what {group} events happened {date}
+searchIntent	what {group} user group events happened {date}
+searchIntent	what {group} meetings happened {date}
+searchIntent	what {group} user group meetings happened {date}
+searchIntent	what {group} events occurred {date}
+searchIntent	what {group} user group events occurred {date}
+searchIntent	what {group} meetings occurred {date}
+searchIntent	what {group} user group meetings occurred {date}
+searchIntent	are there any events on {date}
+searchIntent	were there any events on {date}
+searchIntent	are there events on {date}
+searchIntent	were there events on {date}
+searchIntent	are there any user group events on {date}
+searchIntent	were there any user group events on {date}
+searchIntent	are there user group events on {date}
+searchIntent	were there user group events on {date}
+searchIntent	are there any meetings on {date}
+searchIntent	were there any meetings on {date}
+searchIntent	are there meetings on {date}
+searchIntent	were there meetings on {date}
+searchIntent	are there any user group meetings on {date}
+searchIntent	were there any user group meetings on {date}
+searchIntent	are there user group meetings on {date}
+searchIntent	were there user group meetings on {date}
+searchIntent	are there any events {date}
+searchIntent	were there any events {date}
+searchIntent	are there events {date}
+searchIntent	were there events {date}
+searchIntent	are there any user group events {date}
+searchIntent	were there any user group events {date}
+searchIntent	are there user group events {date}
+searchIntent	were there user group events {date}
+searchIntent	are there any meetings {date}
+searchIntent	were there any meetings {date}
+searchIntent	are there meetings {date}
+searchIntent	were there meetings {date}
+searchIntent	are there any user group meetings {date}
+searchIntent	were there any user group meetings {date}
+searchIntent	are there user group meetings {date}
+searchIntent	were there user group meetings {date}
+searchIntent	are there any {group} events on {date}
+searchIntent	were there any {group} events on {date}
+searchIntent	are there {group} events on {date}
+searchIntent	were there {group} events on {date}
+searchIntent	are there any {group} user group events on {date}
+searchIntent	were there any {group} user group events on {date}
+searchIntent	are there {group} user group events on {date}
+searchIntent	were there {group} user group events on {date}
+searchIntent	are there any {group} meetings on {date}
+searchIntent	were there any {group} meetings on {date}
+searchIntent	are there {group} meetings on {date}
+searchIntent	were there {group} meetings on {date}
+searchIntent	are there any {group} user group meetings on {date}
+searchIntent	were there any {group} user group meetings on {date}
+searchIntent	are there {group} user group meetings on {date}
+searchIntent	were there {group} user group meetings on {date}
+searchIntent	are there any {group} events {date}
+searchIntent	were there any {group} events {date}
+searchIntent	are there {group} events {date}
+searchIntent	were there {group} events {date}
+searchIntent	are there any {group} user group events {date}
+searchIntent	were there any {group} user group events {date}
+searchIntent	are there {group} user group events {date}
+searchIntent	were there {group} user group events {date}
+searchIntent	are there any {group} meetings {date}
+searchIntent	were there any {group} meetings {date}
+searchIntent	are there {group} meetings {date}
+searchIntent	were there {group} meetings {date}
+searchIntent	are there any {group} user group meetings {date}
+searchIntent	were there any {group} user group meetings {date}
+searchIntent	are there {group} user group meetings {date}
+searchIntent	were there {group} user group meetings {date}
+searchIntent	if there are any events on {date}
+searchIntent	there are any events on {date}
+searchIntent	if there were any events on {date}
+searchIntent	there were any events on {date}
+searchIntent	if there are events on {date}
+searchIntent	there are events on {date}
+searchIntent	if there were events on {date}
+searchIntent	there were events on {date}
+searchIntent	if there are any user group events on {date}
+searchIntent	there are any user group events on {date}
+searchIntent	if there were any user group events on {date}
+searchIntent	there were any user group events on {date}
+searchIntent	if there are user group events on {date}
+searchIntent	there are user group events on {date}
+searchIntent	if there were user group events on {date}
+searchIntent	there were user group events on {date}
+searchIntent	if there are any meetings on {date}
+searchIntent	there are any meetings on {date}
+searchIntent	if there were any meetings on {date}
+searchIntent	there were any meetings on {date}
+searchIntent	if there are meetings on {date}
+searchIntent	there are meetings on {date}
+searchIntent	if there were meetings on {date}
+searchIntent	there were meetings on {date}
+searchIntent	if there are any user group meetings on {date}
+searchIntent	there are any user group meetings on {date}
+searchIntent	if there were any user group meetings on {date}
+searchIntent	there were any user group meetings on {date}
+searchIntent	if there are user group meetings on {date}
+searchIntent	there are user group meetings on {date}
+searchIntent	if there were user group meetings on {date}
+searchIntent	there were user group meetings on {date}
+searchIntent	if there are any events {date}
+searchIntent	there are any events {date}
+searchIntent	if there were any events {date}
+searchIntent	there were any events {date}
+searchIntent	if there are events {date}
+searchIntent	there are events {date}
+searchIntent	if there were events {date}
+searchIntent	there were events {date}
+searchIntent	if there are any user group events {date}
+searchIntent	there are any user group events {date}
+searchIntent	if there were any user group events {date}
+searchIntent	there were any user group events {date}
+searchIntent	if there are user group events {date}
+searchIntent	there are user group events {date}
+searchIntent	if there were user group events {date}
+searchIntent	there were user group events {date}
+searchIntent	if there are any meetings {date}
+searchIntent	there are any meetings {date}
+searchIntent	if there were any meetings {date}
+searchIntent	there were any meetings {date}
+searchIntent	if there are meetings {date}
+searchIntent	there are meetings {date}
+searchIntent	if there were meetings {date}
+searchIntent	there were meetings {date}
+searchIntent	if there are any user group meetings {date}
+searchIntent	there are any user group meetings {date}
+searchIntent	if there were any user group meetings {date}
+searchIntent	there were any user group meetings {date}
+searchIntent	if there are user group meetings {date}
+searchIntent	there are user group meetings {date}
+searchIntent	if there were user group meetings {date}
+searchIntent	there were user group meetings {date}
+searchIntent	if there are any {group} events on {date}
+searchIntent	there are any {group} events on {date}
+searchIntent	if there were any {group} events on {date}
+searchIntent	there were any {group} events on {date}
+searchIntent	if there are {group} events on {date}
+searchIntent	there are {group} events on {date}
+searchIntent	if there were {group} events on {date}
+searchIntent	there were {group} events on {date}
+searchIntent	if there are any {group} user group events on {date}
+searchIntent	there are any {group} user group events on {date}
+searchIntent	if there were any {group} user group events on {date}
+searchIntent	there were any {group} user group events on {date}
+searchIntent	if there are {group} user group events on {date}
+searchIntent	there are {group} user group events on {date}
+searchIntent	if there were {group} user group events on {date}
+searchIntent	there were {group} user group events on {date}
+searchIntent	if there are any {group} meetings on {date}
+searchIntent	there are any {group} meetings on {date}
+searchIntent	if there were any {group} meetings on {date}
+searchIntent	there were any {group} meetings on {date}
+searchIntent	if there are {group} meetings on {date}
+searchIntent	there are {group} meetings on {date}
+searchIntent	if there were {group} meetings on {date}
+searchIntent	there were {group} meetings on {date}
+searchIntent	if there are any {group} user group meetings on {date}
+searchIntent	there are any {group} user group meetings on {date}
+searchIntent	if there were any {group} user group meetings on {date}
+searchIntent	there were any {group} user group meetings on {date}
+searchIntent	if there are {group} user group meetings on {date}
+searchIntent	there are {group} user group meetings on {date}
+searchIntent	if there were {group} user group meetings on {date}
+searchIntent	there were {group} user group meetings on {date}
+searchIntent	if there are any {group} events {date}
+searchIntent	there are any {group} events {date}
+searchIntent	if there were any {group} events {date}
+searchIntent	there were any {group} events {date}
+searchIntent	if there are {group} events {date}
+searchIntent	there are {group} events {date}
+searchIntent	if there were {group} events {date}
+searchIntent	there were {group} events {date}
+searchIntent	if there are any {group} user group events {date}
+searchIntent	there are any {group} user group events {date}
+searchIntent	if there were any {group} user group events {date}
+searchIntent	there were any {group} user group events {date}
+searchIntent	if there are {group} user group events {date}
+searchIntent	there are {group} user group events {date}
+searchIntent	if there were {group} user group events {date}
+searchIntent	there were {group} user group events {date}
+searchIntent	if there are any {group} meetings {date}
+searchIntent	there are any {group} meetings {date}
+searchIntent	if there were any {group} meetings {date}
+searchIntent	there were any {group} meetings {date}
+searchIntent	if there are {group} meetings {date}
+searchIntent	there are {group} meetings {date}
+searchIntent	if there were {group} meetings {date}
+searchIntent	there were {group} meetings {date}
+searchIntent	if there are any {group} user group meetings {date}
+searchIntent	there are any {group} user group meetings {date}
+searchIntent	if there were any {group} user group meetings {date}
+searchIntent	there were any {group} user group meetings {date}
+searchIntent	if there are {group} user group meetings {date}
+searchIntent	there are {group} user group meetings {date}
+searchIntent	if there were {group} user group meetings {date}
+searchIntent	there were {group} user group meetings {date}
+searchIntent	is there an event on {date}
+searchIntent	was there an event on {date}
+searchIntent	is there any event on {date}
+searchIntent	was there any event on {date}
+searchIntent	is there an user group event on {date}
+searchIntent	was there an user group event on {date}
+searchIntent	is there any user group event on {date}
+searchIntent	was there any user group event on {date}
+searchIntent	is there an meeting on {date}
+searchIntent	was there an meeting on {date}
+searchIntent	is there any meeting on {date}
+searchIntent	was there any meeting on {date}
+searchIntent	is there an user group meeting on {date}
+searchIntent	was there an user group meeting on {date}
+searchIntent	is there any user group meeting on {date}
+searchIntent	was there any user group meeting on {date}
+searchIntent	is there an event {date}
+searchIntent	was there an event {date}
+searchIntent	is there any event {date}
+searchIntent	was there any event {date}
+searchIntent	is there an user group event {date}
+searchIntent	was there an user group event {date}
+searchIntent	is there any user group event {date}
+searchIntent	was there any user group event {date}
+searchIntent	is there an meeting {date}
+searchIntent	was there an meeting {date}
+searchIntent	is there any meeting {date}
+searchIntent	was there any meeting {date}
+searchIntent	is there an user group meeting {date}
+searchIntent	was there an user group meeting {date}
+searchIntent	is there any user group meeting {date}
+searchIntent	was there any user group meeting {date}
+searchIntent	is there an {group} event on {date}
+searchIntent	was there an {group} event on {date}
+searchIntent	is there any {group} event on {date}
+searchIntent	was there any {group} event on {date}
+searchIntent	is there an {group} user group event on {date}
+searchIntent	was there an {group} user group event on {date}
+searchIntent	is there any {group} user group event on {date}
+searchIntent	was there any {group} user group event on {date}
+searchIntent	is there an {group} meeting on {date}
+searchIntent	was there an {group} meeting on {date}
+searchIntent	is there any {group} meeting on {date}
+searchIntent	was there any {group} meeting on {date}
+searchIntent	is there an {group} user group meeting on {date}
+searchIntent	was there an {group} user group meeting on {date}
+searchIntent	is there any {group} user group meeting on {date}
+searchIntent	was there any {group} user group meeting on {date}
+searchIntent	is there an {group} event {date}
+searchIntent	was there an {group} event {date}
+searchIntent	is there any {group} event {date}
+searchIntent	was there any {group} event {date}
+searchIntent	is there an {group} user group event {date}
+searchIntent	was there an {group} user group event {date}
+searchIntent	is there any {group} user group event {date}
+searchIntent	was there any {group} user group event {date}
+searchIntent	is there an {group} meeting {date}
+searchIntent	was there an {group} meeting {date}
+searchIntent	is there any {group} meeting {date}
+searchIntent	was there any {group} meeting {date}
+searchIntent	is there an {group} user group meeting {date}
+searchIntent	was there an {group} user group meeting {date}
+searchIntent	is there any {group} user group meeting {date}
+searchIntent	was there any {group} user group meeting {date}
+eventIntent	tell me about event {number}
+eventIntent	tell me about user group event {number}
+eventIntent	tell me about meeting {number}
+eventIntent	tell me about user group meeting {number}
+eventIntent	whats event {number}
+eventIntent	whats user group event {number}
+eventIntent	whats meeting {number}
+eventIntent	whats user group meeting {number}
+eventIntent	what about {number}
+eventIntent	number {number}
+eventIntent	{number}
