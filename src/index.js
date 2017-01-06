@@ -11,7 +11,7 @@ var states = {
 var alexa;
 
 //OPTIONAL: replace with "amzn1.ask.skill.[your-unique-value-here]";
-var APP_ID = 'amzn1.ask.skill.2283a2d6-cdef-4265-9f97-28d961d74aac';
+var APP_ID = 'amzn1.ask.skill.2283a2d6-cdef-4265-9f97-000000000000';
 
 // URL to get the .ics from, in this instance we are getting from Stanford however this can be changed
 var URL = "https://s3.amazonaws.com/calendars.epicminds.com/eventbrite-pssug.ics";
